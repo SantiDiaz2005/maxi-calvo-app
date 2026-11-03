@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Disc, ArrowRight, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
-import { clsx, type ClassValue } from 'clsx';
-import { twMerge } from 'tailwind-merge';
 
 // Con @ts-ignore silenciamos el falso error de TypeScript para que no haya líneas rojas
 // @ts-ignore
@@ -13,10 +11,6 @@ import img0315 from './imports/IMG_0315.JPEG';
 import img0352 from './imports/IMG_0877.JPG.jpeg';
 // @ts-ignore
 import img0360 from './imports/IMG_0360.JPEG';
-
-function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
 
 export default function App() {
   return (
@@ -39,7 +33,7 @@ function HeroSection() {
         <img 
           src={img0315} 
           alt="Fondo de luces de club" 
-          className="w-full h-full object-cover opacity-60"
+          className="w-full h-full object-cover object-top opacity-60"
         />
         <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black to-transparent" />
       </div>
