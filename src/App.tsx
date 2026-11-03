@@ -29,11 +29,11 @@ function HeroSection() {
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-black/60" />
-        {/* Usamos object-[center_0%] para que la foto suba al tope exacto y la cabeza quede arriba */}
+        {/* Ajustamos exactamente al 15% para que la cabeza quede en el lugar justo */}
         <img 
           src={img0315} 
           alt="Fondo de luces de club" 
-          className="w-full h-full object-cover object-[center_0%] opacity-60"
+          className="w-full h-full object-cover object-[center_15%] opacity-60"
         />
         <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black to-transparent" />
       </div>
