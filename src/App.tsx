@@ -33,7 +33,7 @@ function HeroSection() {
         <img 
           src={img0315} 
           alt="Fondo de luces de club" 
-          className="w-full h-full object-cover object-[center_30%] opacity-60"
+          className="w-full h-full object-cover object-[center_40%] opacity-60"
         />
         <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black to-transparent" />
       </div>
