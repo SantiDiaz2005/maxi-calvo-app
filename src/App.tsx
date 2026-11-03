@@ -30,11 +30,11 @@ function HeroSection() {
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-black/60" />
-        {/* En celulares usamos object-[center_15%] para que la cara no tape el logo, y en compu (md:) se queda en tu 44% */}
+        {/* En celulares subimos la imagen al 5% para que la cabeza quede arriba del logo, y en compu (md:) se mantiene en tu 44% */}
         <img 
           src={img0315} 
           alt="Fondo de luces de club" 
-          className="w-full h-full object-cover object-[center_15%] md:object-[center_44%] opacity-60"
+          className="w-full h-full object-cover object-[center_5%] md:object-[center_44%] opacity-60"
         />
         <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black to-transparent" />
       </div>
@@ -225,11 +225,11 @@ function TourDatesSection() {
 function PastSetsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Títulos diferenciados para que cada video se distinga con claridad
+  // Títulos con Set 01, Set 02 y Set 03 limpios sin subtítulos extraños
   const VIDEOS = [
-    { id: 1, title: 'Open Set Live - Set 01', type: 'Situra XL X UNP (Club Mix)', src: '/videos/IMG_1200.MP4' },
-    { id: 2, title: 'Open Set Live - Set 02', type: 'Situra XL X UNP (Main Stage)', src: '/videos/IMG_1201.MP4' },
-    { id: 3, title: 'Open Set Live - Set 03', type: 'Situra XL X UNP (Extended)', src: '/videos/IMG_1204.MP4' }
+    { id: 1, title: 'Open Set Live - Set 01', type: 'Situra XL X UNP', src: '/videos/IMG_1200.MP4' },
+    { id: 2, title: 'Open Set Live - Set 02', type: 'Situra XL X UNP', src: '/videos/IMG_1201.MP4' },
+    { id: 3, title: 'Open Set Live - Set 03', type: 'Situra XL X UNP', src: '/videos/IMG_1204.MP4' }
   ];
 
   const nextVideo = () => setCurrentIndex((prev) => (prev + 1) % VIDEOS.length);
