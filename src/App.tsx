@@ -30,6 +30,7 @@ function HeroSection() {
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-black/60" />
+        {/* Acá aplicamos object-top para que no le corte la cabeza */}
         <img 
           src={img0315} 
           alt="Fondo de luces de club" 
@@ -117,7 +118,6 @@ function AboutSection() {
             </p>
           </div>
           
-          {/* Botones de redes agregados debajo del texto */}
           <div className="mt-10 flex flex-col sm:flex-row flex-wrap gap-6">
             <a href="https://open.spotify.com/intl-es/artist/3o3UXSZE6WgX2vGdVEbvzH?si=dUuVFAI6SiCjaBXitkPoMQ" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-fuchsia-500 hover:text-white transition-colors uppercase tracking-widest text-sm font-semibold border-b border-fuchsia-500/30 hover:border-fuchsia-500 pb-1">
               <Disc className="w-4 h-4" /> Escuchar en Spotify
@@ -225,7 +225,6 @@ function TourDatesSection() {
 function PastSetsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // Títulos y subtítulos actualizados para todos los videos
   const VIDEOS = [
     { id: 1, title: 'Open set live', type: 'Situra XL X UNP', src: '/videos/IMG_1200.MP4' },
     { id: 2, title: 'Open set live', type: 'Situra XL X UNP', src: '/videos/IMG_1201.MP4' },
@@ -248,7 +247,6 @@ function PastSetsSection() {
         <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-cyan-400">
           Visuales y Sets
         </h2>
-        {/* Frase "Viví la energía en vivo" eliminada */}
       </motion.div>
 
       <div className="flex items-center gap-4 md:gap-8">
