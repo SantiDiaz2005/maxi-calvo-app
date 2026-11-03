@@ -27,17 +27,14 @@ export default function App() {
 function HeroSection() {
   return (
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
+      {/* Fondo original simple con la foto y opacidad */}
       <div className="absolute inset-0">
-        {/* Fondo negro puro atrás de todo */}
-        <div className="absolute inset-0 bg-black" />
-        
-        {/* La foto con object-top (para no cortar la cabeza) y opacity-60 (para oscurecerla sin taparla) */}
+        <div className="absolute inset-0 bg-black/60" />
         <img 
           src={img0315} 
-          alt="Fondo de Maxi Calvo" 
-          className="w-full h-full object-cover object-top opacity-60"
+          alt="Fondo de luces de club" 
+          className="w-full h-full object-cover opacity-60"
         />
-        
         <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black to-transparent" />
       </div>
 
