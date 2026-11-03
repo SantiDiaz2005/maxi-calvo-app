@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Music, Disc, ArrowRight, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Disc, ArrowRight, ExternalLink, ChevronLeft, ChevronRight } from 'lucide-react';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -34,7 +34,6 @@ export default function App() {
 function HeroSection() {
   return (
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* 1. Fondo sin capas (z-index) para no bloquear la transparencia del logo */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-black/60" />
         <img 
@@ -46,14 +45,12 @@ function HeroSection() {
       </div>
 
       <div className="relative flex flex-col items-center justify-center text-center px-4 w-full h-full">
-        {/* 2. El mix-blend-screen se aplica al contenedor de la animación */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           className="w-full flex justify-center mix-blend-screen"
         >
-          {/* 3. La imagen invierte su color (invert) para que el fondo blanco se vuelva negro y desaparezca */}
           <img 
             src={logomaxi} 
             alt="Maxi Calvo Logo" 
@@ -125,9 +122,31 @@ function AboutSection() {
               Con un perfil en constante evolución, Maxi Calvo se destaca por sets dinámicos y con identidad propia, orientados a generar una conexión profunda en la pista mediante grooves hipnóticos y líneas melódicas envolventes.
             </p>
           </div>
-          <div className="mt-10 flex gap-4">
+          
+          {/* Botones de redes agregados debajo del texto */}
+          <div className="mt-10 flex flex-col sm:flex-row flex-wrap gap-6">
             <a href="https://open.spotify.com/intl-es/artist/3o3UXSZE6WgX2vGdVEbvzH?si=dUuVFAI6SiCjaBXitkPoMQ" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-fuchsia-500 hover:text-white transition-colors uppercase tracking-widest text-sm font-semibold border-b border-fuchsia-500/30 hover:border-fuchsia-500 pb-1">
               <Disc className="w-4 h-4" /> Escuchar en Spotify
+            </a>
+            
+            <a href="https://www.youtube.com/channel/UC7bjctyBXX3u5AX01kLeO_A" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-fuchsia-500 hover:text-white transition-colors uppercase tracking-widest text-sm font-semibold border-b border-fuchsia-500/30 hover:border-fuchsia-500 pb-1">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33zM9.75 15.02V8.48l5.75 3.27-5.75 3.27z" />
+              </svg> Escuchar en YouTube
+            </a>
+
+            <a href="https://soundcloud.com/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-fuchsia-500 hover:text-white transition-colors uppercase tracking-widest text-sm font-semibold border-b border-fuchsia-500/30 hover:border-fuchsia-500 pb-1">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3" />
+              </svg> Escuchar en SoundCloud
+            </a>
+
+            <a href="https://www.instagram.com/maxicalvo7/" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-fuchsia-500 hover:text-white transition-colors uppercase tracking-widest text-sm font-semibold border-b border-fuchsia-500/30 hover:border-fuchsia-500 pb-1">
+              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
+              </svg> Abrir el perfil de Instagram
             </a>
           </div>
         </motion.div>
@@ -136,7 +155,6 @@ function AboutSection() {
   );
 }
 
-// Fechas vacías para llenar cuando Maxi te las pase
 const TOUR_DATES: any[] = [];
 
 function TourDatesSection() {
@@ -213,16 +231,16 @@ function TourDatesSection() {
 function PastSetsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Títulos y subtítulos actualizados para todos los videos
   const VIDEOS = [
-    { id: 1, title: 'Warm Up Set', type: 'Club', src: '/videos/IMG_1200.MP4' },
-    { id: 2, title: 'Main Time', type: 'Festival', src: '/videos/IMG_1201.MP4' },
-    { id: 3, title: 'Sunset Session', type: 'Live', src: '/videos/IMG_1204.MP4' }
+    { id: 1, title: 'Open set live', type: 'Situra XL X UNP', src: '/videos/IMG_1200.MP4' },
+    { id: 2, title: 'Open set live', type: 'Situra XL X UNP', src: '/videos/IMG_1201.MP4' },
+    { id: 3, title: 'Open set live', type: 'Situra XL X UNP', src: '/videos/IMG_1204.MP4' }
   ];
 
   const nextVideo = () => setCurrentIndex((prev) => (prev + 1) % VIDEOS.length);
   const prevVideo = () => setCurrentIndex((prev) => (prev - 1 + VIDEOS.length) % VIDEOS.length);
 
-  // Calculamos cuál es el video que le sigue al actual
   const nextIndex = (currentIndex + 1) % VIDEOS.length;
 
   return (
@@ -233,16 +251,13 @@ function PastSetsSection() {
         viewport={{ once: true }}
         className="mb-12 text-center"
       >
-        <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight mb-4 text-cyan-400">
+        <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-tight text-cyan-400">
           Visuales y Sets
         </h2>
-        <p className="text-white/50 tracking-widest uppercase text-sm">Viví la energía en vivo</p>
+        {/* Frase "Viví la energía en vivo" eliminada */}
       </motion.div>
 
-      {/* Nuevo layout de Carrusel lado a lado con flechas a los costados */}
       <div className="flex items-center gap-4 md:gap-8">
-        
-        {/* Flecha Izquierda más grande */}
         <button 
           onClick={prevVideo}
           className="w-16 h-16 shrink-0 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 hover:border-cyan-400 transition-all text-white"
@@ -250,10 +265,7 @@ function PastSetsSection() {
           <ChevronLeft className="w-8 h-8" />
         </button>
 
-        {/* Contenedor de los videos */}
         <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-8">
-          
-          {/* Video 1 (Principal) */}
           <div className="flex flex-col gap-4">
             <div className="aspect-video bg-[#111] border border-white/10 relative overflow-hidden rounded-lg shadow-2xl">
               <video 
@@ -270,7 +282,6 @@ function PastSetsSection() {
             </div>
           </div>
 
-          {/* Video 2 (El siguiente - se ve al lado) */}
           <div className="hidden lg:flex flex-col gap-4 opacity-60 hover:opacity-100 transition-opacity">
             <div className="aspect-video bg-[#111] border border-white/10 relative overflow-hidden rounded-lg shadow-2xl">
               <video 
@@ -286,10 +297,8 @@ function PastSetsSection() {
               <p className="text-fuchsia-500 text-sm tracking-widest uppercase mt-1">{VIDEOS[nextIndex].type}</p>
             </div>
           </div>
-
         </div>
 
-        {/* Flecha Derecha más grande */}
         <button 
           onClick={nextVideo}
           className="w-16 h-16 shrink-0 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 hover:border-cyan-400 transition-all text-white"
@@ -361,29 +370,25 @@ function Footer() {
             Redes
           </h4>
           <div className="flex gap-4">
-            {/* INSTAGRAM (Link actualizado) */}
-            <a href="https://www.instagram.com/maxicalvo7/" target="_blank" rel="noreferrer" className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center hover:bg-fuchsia-500 hover:text-white transition-colors">
+            <a href="https://www.instagram.com/maxicalvo7/" target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center hover:bg-fuchsia-500 hover:text-white transition-colors">
               <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                 <line x1="17.5" x2="17.51" y1="6.5" y2="6.5" />
               </svg>
             </a>
-            {/* YOUTUBE (Link actualizado) */}
-            <a href="https://www.youtube.com/channel/UC7bjctyBXX3u5AX01kLeO_A" target="_blank" rel="noreferrer" className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition-colors text-white">
+            <a href="https://www.youtube.com/channel/UC7bjctyBXX3u5AX01kLeO_A" target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#FF0000] hover:text-white transition-colors text-white">
               <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33 2.78 2.78 0 0 0 1.94 2c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.33 29 29 0 0 0-.46-5.33z" />
                 <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
               </svg>
             </a>
-            {/* SPOTIFY (Link actualizado) */}
-            <a href="https://open.spotify.com/intl-es/artist/3o3UXSZE6WgX2vGdVEbvzH?si=dUuVFAI6SiCjaBXitkPoMQ" target="_blank" rel="noreferrer" className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#1DB954] hover:text-white transition-colors text-white">
+            <a href="https://open.spotify.com/intl-es/artist/3o3UXSZE6WgX2vGdVEbvzH?si=dUuVFAI6SiCjaBXitkPoMQ" target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#1DB954] hover:text-white transition-colors text-white">
               <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.66.301 1.02zm1.44-3.3c-.301.42-.84.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.84.241 1.2zM20.16 9.6C15.84 7.08 9.12 6.9 5.28 8.1c-.6.18-1.2-.12-1.38-.72-.18-.6.12-1.2.72-1.38 4.32-1.38 11.64-1.2 16.62 1.8.54.3.72 1.02.42 1.56-.24.6-.96.78-1.5.24z"/>
               </svg>
             </a>
-            {/* SOUNDCLOUD */}
-            <a href="https://soundcloud.com/" target="_blank" rel="noreferrer" className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#ff5500] hover:text-white transition-colors text-white">
+            <a href="https://soundcloud.com/" target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#ff5500] hover:text-white transition-colors text-white">
               <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3" />
               </svg>
