@@ -24,18 +24,18 @@ export default function App() {
     </div>
   );
 }
-
 function HeroSection() {
   return (
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
       <div className="absolute inset-0">
-        <div className="absolute inset-0 bg-black/60" />
-        {/* Acá aplicamos object-top para que no le corte la cabeza */}
+        {/* Foto de fondo completamente opaca y anclada arriba (object-top) */}
         <img 
           src={img0315} 
-          alt="Fondo de luces de club" 
-          className="w-full h-full object-cover object-top opacity-60"
+          alt="Fondo de Maxi Calvo" 
+          className="absolute inset-0 w-full h-full object-cover object-top"
         />
+        {/* Filtro negro más suave (40%) POR ENCIMA de la foto para que resalte el logo */}
+        <div className="absolute inset-0 bg-black/40" />
         <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black to-transparent" />
       </div>
 
