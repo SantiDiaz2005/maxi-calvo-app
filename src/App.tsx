@@ -28,14 +28,16 @@ function HeroSection() {
   return (
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
       <div className="absolute inset-0">
-        {/* Foto de fondo completamente opaca y anclada arriba (object-top) */}
+        {/* Fondo negro puro atrás de todo */}
+        <div className="absolute inset-0 bg-black" />
+        
+        {/* La foto con object-top (para no cortar la cabeza) y opacity-60 (para oscurecerla sin taparla) */}
         <img 
           src={img0315} 
           alt="Fondo de Maxi Calvo" 
-          className="absolute inset-0 w-full h-full object-cover object-top"
+          className="w-full h-full object-cover object-top opacity-60"
         />
-        {/* Filtro negro más suave (40%) POR ENCIMA de la foto para que resalte el logo */}
-        <div className="absolute inset-0 bg-black/40" />
+        
         <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black to-transparent" />
       </div>
 
