@@ -24,16 +24,17 @@ export default function App() {
     </div>
   );
 }
+
 function HeroSection() {
   return (
     <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-black/60" />
-        {/* Ajustamos exactamente al 15% para que la cabeza quede en el lugar justo */}
+        {/* En celulares usamos object-[center_15%] para que la cara no tape el logo, y en compu (md:) se queda en tu 44% */}
         <img 
           src={img0315} 
           alt="Fondo de luces de club" 
-          className="w-full h-full object-cover object-[center_44%] opacity-60"
+          className="w-full h-full object-cover object-[center_15%] md:object-[center_44%] opacity-60"
         />
         <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black to-transparent" />
       </div>
@@ -70,6 +71,7 @@ function HeroSection() {
     </section>
   );
 }
+
 function AboutSection() {
   return (
     <section id="about" className="py-24 md:py-32 relative z-10 px-6 max-w-7xl mx-auto bg-black">
@@ -223,10 +225,11 @@ function TourDatesSection() {
 function PastSetsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  // Títulos diferenciados para que cada video se distinga con claridad
   const VIDEOS = [
-    { id: 1, title: 'Open set live', type: 'Situra XL X UNP', src: '/videos/IMG_1200.MP4' },
-    { id: 2, title: 'Open set live', type: 'Situra XL X UNP', src: '/videos/IMG_1201.MP4' },
-    { id: 3, title: 'Open set live', type: 'Situra XL X UNP', src: '/videos/IMG_1204.MP4' }
+    { id: 1, title: 'Open Set Live - Set 01', type: 'Situra XL X UNP (Club Mix)', src: '/videos/IMG_1200.MP4' },
+    { id: 2, title: 'Open Set Live - Set 02', type: 'Situra XL X UNP (Main Stage)', src: '/videos/IMG_1201.MP4' },
+    { id: 3, title: 'Open Set Live - Set 03', type: 'Situra XL X UNP (Extended)', src: '/videos/IMG_1204.MP4' }
   ];
 
   const nextVideo = () => setCurrentIndex((prev) => (prev + 1) % VIDEOS.length);
@@ -262,7 +265,7 @@ function PastSetsSection() {
                 key={VIDEOS[currentIndex].id}
                 className="w-full h-full object-cover"
                 controls
-                preload="metadata"
+                preload="auto"
                 src={VIDEOS[currentIndex].src}
               />
             </div>
@@ -278,7 +281,7 @@ function PastSetsSection() {
                 key={VIDEOS[nextIndex].id}
                 className="w-full h-full object-cover"
                 controls
-                preload="metadata"
+                preload="auto"
                 src={VIDEOS[nextIndex].src}
               />
             </div>
@@ -373,12 +376,12 @@ function Footer() {
                 <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
               </svg>
             </a>
-            <a href="https://open.spotify.com/intl-es/artist/3o3UXSZE6WgX2vGdVEbvzH?si=dUuVFAI6SiCjaBXitkPoMQ" target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#1DB954] hover:text-white transition-colors text-white">
+            <a href="https://open.spotify.com/intl-es/artist/3o3UXSZE6WgX2vGdVEbvzH?si=dUuVFAI6SiCjaBXitkPoMQ" target="_blank" rel="noreferrer" className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#1DB954] hover:text-white transition-colors text-white">
               <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.54.66.301 1.02zm1.44-3.3c-.301.42-.84.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.84.241 1.2zM20.16 9.6C15.84 7.08 9.12 6.9 5.28 8.1c-.6.18-1.2-.12-1.38-.72-.18-.6.12-1.2.72-1.38 4.32-1.38 11.64-1.2 16.62 1.8.54.3.72 1.02.42 1.56-.24.6-.96.78-1.5.24z"/>
               </svg>
             </a>
-            <a href="https://soundcloud.com/" target="_blank" rel="noopener noreferrer" className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#ff5500] hover:text-white transition-colors text-white">
+            <a href="https://soundcloud.com/" target="_blank" rel="noreferrer" className="w-14 h-14 rounded-full bg-white/5 flex items-center justify-center hover:bg-[#ff5500] hover:text-white transition-colors text-white">
               <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M3 14h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-7a9 9 0 0 1 18 0v7a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3" />
               </svg>
